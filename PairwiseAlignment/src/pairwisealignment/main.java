@@ -8,10 +8,10 @@ import java.io.*;
 
 /**
  *
- * @author Cyrus Liang and Patrick Solis
+ * @author Cyrus Liang
  * Prof. Phillip Heller
  * CS123A
- * Bioinformatics Project
+ * Bioinformatics Project: BReastCAncer
  */
 public class main {
 
@@ -21,6 +21,7 @@ public class main {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        // store input strings
         String inputA = "";
         String inputB = "";
         
@@ -57,6 +58,7 @@ public class main {
             // Or we could just do this: 
             // ex.printStackTrace();
         }
+        // check inputA string
         System.out.println(inputA);
 
         // grab input file B
@@ -91,9 +93,13 @@ public class main {
             // Or we could just do this: 
             // ex.printStackTrace();
         }
+        // check inputB string
         System.out.println(inputB);
         
         // run global alignment on A and B
+        GlobalAlignment myObj = new GlobalAlignment(inputA, inputB);
+        // get score for global alignment of A and B
+        System.out.println(myObj.getBestScore());
         
         // generate output file C
         
