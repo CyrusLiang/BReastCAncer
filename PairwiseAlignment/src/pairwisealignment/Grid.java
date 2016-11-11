@@ -33,7 +33,7 @@ public class Grid {
     // uses the nucleotide seuqences and the grid to return the best score
     private void populateGrid(int lenA, int lenB) {
         // initialize all the variables
-        int i = 0, j = 0, top = 0, left = 0, corner = 0, temp = 0;
+        int i, j, top = 0, left = 0, corner = 0, temp = 0;
         
         // nested for loop to run through the 2d array
         for (i = 0; i < lenA; i++) {

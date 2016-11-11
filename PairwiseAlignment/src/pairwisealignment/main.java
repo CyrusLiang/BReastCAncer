@@ -5,6 +5,7 @@
  */
 package pairwisealignment;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,10 +23,9 @@ public class main {
         // TODO code application logic here
         
         // store input strings
-        String inputA = "";
-        String inputB = "";
+        ArrayList<String> input = new ArrayList<>();
         
-        // grab input file A
+        // grab input file names
         // The name of the file to open.
         String fileName = args[0];
         
@@ -40,7 +40,7 @@ public class main {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             while((line = bufferedReader.readLine()) != null) {
-                inputA = inputA + line;
+                input.add(line);
             }   
 
             // Close files.
@@ -59,51 +59,64 @@ public class main {
             // ex.printStackTrace();
         }
         // check inputA string
-        System.out.println(inputA);
-
-        // grab input file B
-        // The name of the file to open.
-        fileName = args[1];
+        // System.out.println(input);
         
-        // This will reference one line at a time
+        int size = input.size() - 1;
+        String[] filenames = new String[size + 1];
+        for (int mySeq = 0; mySeq < size + 1; mySeq++) {
+            filenames[mySeq] = input.get(mySeq);
+            System.out.println(filenames[mySeq]);
+        }
+        
+        ArrayList<String> pairScores = new ArrayList<>();
+        
+        // run global alignment on A and B
+        GlobalAlignment myObj;
+        int i = 0, j = 0;
+        
+        for (i = 0; i < size; i++) {
+            for (j = i + 1; j < size; j++) {
+                myObj = new GlobalAlignment(filenames[i], filenames[j]);
+                pairScores.add(i + " " + j + " " + myObj.getBestScore());
+            }
+        }
+        
+        int msaSize = (size) * (size + 1) / 2;
+        String[] multiSeqAlignment = new String[msaSize];
+        for (int myMSA = 0; myMSA < msaSize; myMSA++) {
+            multiSeqAlignment[myMSA] = pairScores.get(myMSA);
+        }
+        
+        
+        // The name of the file to open.
+        String outputFileName = args[1];
 
         try {
-            // FileReader reads text files in the default encoding.
-            FileReader fileReader = new FileReader(fileName);
+            FileWriter fileWriter = new FileWriter(fileName);
 
-            // Wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            // Wrap FileWriter in BufferedWriter.
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            while((line = bufferedReader.readLine()) != null) {
-                inputB = inputB + line;
-            }   
+            // append a newline character.
+            int sizeOut = multiSeqAlignment.length;
+            for (i = 0; i < sizeOut; i++) {
+                bufferedWriter.write(multiSeqAlignment[i]);
+                bufferedWriter.newLine();
+                System.out.println(multiSeqAlignment[i]);
+            }
 
-            // Close files.
-            bufferedReader.close();         
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                "Unable to open file '" + 
-                fileName + "'");                
+            // Always close files.
+            bufferedWriter.close();
         }
         catch(IOException ex) {
             System.out.println(
-                "Error reading file '" 
-                + fileName + "'");                  
-            // Or we could just do this: 
+                "Error writing to file '" + fileName + "'");
+            // Or we could just do this:
             // ex.printStackTrace();
         }
-        // check inputB string
-        System.out.println(inputB);
-        
-        // run global alignment on A and B
-        GlobalAlignment myObj = new GlobalAlignment(inputA, inputB);
-        // get score for global alignment of A and B
-        System.out.println(myObj.getBestScore());
-        
-        // generate output file C
         
         // display execution confirmation
+        System.out.println("done.");
     }
     
 }
