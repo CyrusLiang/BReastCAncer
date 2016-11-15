@@ -68,6 +68,8 @@ public class main {
             System.out.println("File: " + mySeq + " " + filenames[mySeq]);
         }
         
+        System.out.println("Done with reading files.");
+        
         ArrayList<String> pairScores = new ArrayList<>();
         
         // run global alignment on A and B
@@ -88,9 +90,10 @@ public class main {
             multiSeqAlignment[myMSA] = pairScores.get(myMSA);
         }
         
+        System.out.println("Done with MSA.");
         
         // The name of the file to open.
-        String outputFileName = args[1];
+        fileName = args[1];
 
         try {
             FileWriter fileWriter = new FileWriter(fileName);
@@ -98,6 +101,11 @@ public class main {
             // Wrap FileWriter in BufferedWriter.
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
+            for (i = 0; i < size; i++) {
+                bufferedWriter.write(i + ": " + filenames[i]);
+                bufferedWriter.newLine();
+            }
+            
             // append a newline character.
             int sizeOut = multiSeqAlignment.length;
             for (i = 0; i < sizeOut; i++) {
