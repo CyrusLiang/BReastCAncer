@@ -101,10 +101,10 @@ public class main {
             // Wrap FileWriter in BufferedWriter.
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            for (i = 0; i < size; i++) {
-                bufferedWriter.write(i + ": " + filenames[i]);
-                bufferedWriter.newLine();
-            }
+            // for (i = 0; i < size; i++) {
+            //     bufferedWriter.write(i + ": " + filenames[i]);
+            //     bufferedWriter.newLine();
+            // }
             
             // append a newline character.
             int sizeOut = multiSeqAlignment.length;
