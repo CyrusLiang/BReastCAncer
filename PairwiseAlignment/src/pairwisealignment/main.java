@@ -82,7 +82,7 @@ public class main {
             }
         }
         
-        int msaSize = (size) * (size + 1) / 2;
+        int msaSize = (size - 1) * (size) / 2;
         String[] multiSeqAlignment = new String[msaSize];
         for (int myMSA = 0; myMSA < msaSize; myMSA++) {
             multiSeqAlignment[myMSA] = pairScores.get(myMSA);
