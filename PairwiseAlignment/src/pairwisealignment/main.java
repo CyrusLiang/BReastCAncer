@@ -61,11 +61,11 @@ public class main {
         // check inputA string
         // System.out.println(input);
         
-        int size = input.size() - 1;
-        String[] filenames = new String[size + 1];
-        for (int mySeq = 0; mySeq < size + 1; mySeq++) {
+        int size = input.size();
+        String[] filenames = new String[size];
+        for (int mySeq = 0; mySeq < size; mySeq++) {
             filenames[mySeq] = input.get(mySeq);
-            System.out.println(filenames[mySeq]);
+            System.out.println("File: " + mySeq + " " + filenames[mySeq]);
         }
         
         ArrayList<String> pairScores = new ArrayList<>();
@@ -74,8 +74,9 @@ public class main {
         GlobalAlignment myObj;
         int i = 0, j = 0;
         
-        for (i = 0; i < size; i++) {
+        for (i = 0; i < size - 1; i++) {
             for (j = i + 1; j < size; j++) {
+                System.out.println("Working on: " + i + " and " + j);
                 myObj = new GlobalAlignment(filenames[i], filenames[j]);
                 pairScores.add(i + " " + j + " " + myObj.getBestScore());
             }
