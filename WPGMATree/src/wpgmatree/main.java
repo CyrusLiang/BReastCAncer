@@ -49,10 +49,11 @@ public class main {
 			scores = new float[scoreSize];
 			
 			//for loop to skip the location of the sequences
-			for(int i = 0; i < size; i++)
-			{
-				bufferedReader.readLine();
-			}
+			//for(int i = 0; i < size; i++)
+			//{
+			//	bufferedReader.readLine();
+			//}
+			
 			int i = 0;
 			
 			//Adds scores to array
