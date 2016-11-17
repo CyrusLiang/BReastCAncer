@@ -25,7 +25,7 @@ public class Grid {
         int lenA = nucA.length();
         int lenB = nucB.length();
         this.myGrid = new int[lenA][lenB];
-        System.out.println("lenA: " + inputA.length() + " lenB: " + inputB.length());
+        System.out.println("lenA: " + lenA + " lenB: " + lenB);
         
         populateGrid(lenA, lenB);
     }

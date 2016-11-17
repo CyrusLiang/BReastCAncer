@@ -41,7 +41,7 @@ public class GlobalAlignment {
             // Wrap FileReader in BufferedReader
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            // concatinate nucleotide sequence
+            // concatenate nucleotide sequence
             while((line = bufferedReader.readLine()) != null) {
                 inputA = inputA + line;
             }   
@@ -71,7 +71,7 @@ public class GlobalAlignment {
             // Wrap FileReader in BufferedReader
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            // concatinate nucleotide sequence
+            // concatenate nucleotide sequence
             while((line = bufferedReader.readLine()) != null) {
                 inputB = inputB + line;
             }   
