@@ -290,7 +290,7 @@ public class Tree {
 			if(t.level != 1 && (t.left != null && t.right != null)){
 				while(i < t.level-1)
 				{
-					line +="\t";
+					line +="        ";
 					i++;
 				}
 			}
