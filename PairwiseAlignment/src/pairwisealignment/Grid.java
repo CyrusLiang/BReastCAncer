@@ -39,15 +39,9 @@ public class Grid {
         // nested for loop to run through the 2d array
         for (i = 0; i < lenA; i++) {
             for (j = 0; j < lenB; j++) {
-                // test [0][0] case
-                if (i == 0 && j == 0)
+                // initialize top row and left column to 0
+                if (i == 0 || j == 0)
                     this.myGrid[i][j] = 0;
-                // initialize the top row
-                else if (i == 0 && j != 0)
-                    this.myGrid[i][j] = this.myGrid[i][j-1] - 2;
-                // initialize the left column
-                else if (j == 0 && i != 0)
-                    this.myGrid[i][j] = this.myGrid[i-1][j] - 2;
                 // fill in the rest of the array with correct score
                 else {
                     top = this.myGrid[i-1][j] - 2;
