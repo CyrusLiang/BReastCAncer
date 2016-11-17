@@ -75,7 +75,7 @@ public class main {
         
         // run global alignment on A and B
         GlobalAlignment myObj;
-        int i = 0, j = 0;
+        int i, j;
         
         // neseted loop to compare all values for handshakes
         for (i = 0; i < size - 1; i++) {

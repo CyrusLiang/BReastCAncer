@@ -95,11 +95,14 @@ public class GlobalAlignment {
         System.out.println(inputB);
         
         // set class variables
-        setNucA(inputA);
-        setNucB(inputB);
+        this.nucA = inputA;
+        this.nucB = inputB;
         
-        // this function is mutable for more optimal solutions
-        needlemanWunsch(inputA, inputB);
+        // takes 2 nucleotide sequences and creates a grid
+        this.myGrid = new Grid(nucA, nucB);
+        
+        // sets global score from the final cell in the grid
+        this.globalScore = myGrid.getScore(nucA.length(), nucB.length());
     }
     
     // return string nucleotide A
@@ -146,14 +149,4 @@ public class GlobalAlignment {
         this.nucB = inputB;
     }
     
-    // takes 2 nucleotide sequences and creates a grid
-    // call grid getScore() function for the global score
-    public void needlemanWunsch(String nucA, String nucB) {
-        
-        // creates grid
-        this.myGrid = new Grid(nucA, nucB);
-        
-        // sets global score from the final cell in the grid
-        this.globalScore = myGrid.getScore(nucA.length(), nucB.length());
-    }
 }

@@ -16,7 +16,7 @@ public class Grid {
     
     // store final score
     private String nucA = "", nucB = "";
-    private int[][] myGrid;
+    private final int[][] myGrid;
     
     // store input as nucleotides and create grid
     public Grid(String inputA, String inputB) {
@@ -32,8 +32,9 @@ public class Grid {
     
     // uses the nucleotide seuqences and the grid to return the best score
     private void populateGrid(int lenA, int lenB) {
+        
         // initialize all the variables
-        int i, j, top = 0, left = 0, corner = 0, temp = 0;
+        int i, j, top, left, corner, temp;
         
         // nested for loop to run through the 2d array
         for (i = 0; i < lenA; i++) {
