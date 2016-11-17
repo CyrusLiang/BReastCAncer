@@ -295,8 +295,25 @@ public class Tree {
 				}
 			}
 			
+			String subLine;
 			//Used to format for spacing
-			String subLine = t.name + ": " + t.score;
+			if(t.level == 1)
+			{
+				if(t.description.length() >= 14)
+				{
+					line += "(" + t.description + ")\t";
+				}
+				else
+				{
+					line += "(" + t.description + ")\t        ";
+				}
+			}
+			else
+			{
+				line += "                        ";
+			}
+			
+			subLine = t.name + ": " + t.score;
 			while(subLine.length() < 16)
 			{
 				subLine = subLine + "-";

@@ -11,6 +11,7 @@ package wpgmatree;
 
 public class Node {
 	String name;
+	String description;
 	float score;
 	Node right;
 	Node parent;

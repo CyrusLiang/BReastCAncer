@@ -32,6 +32,9 @@ public class main {
 		//Stores max value
 		float max = 0;
 		
+		//Descriptive names
+		String[] names = new String[0];
+		
 		try{
 			//FileReader will read the file
 			FileReader fileReader = new FileReader(fileName);
@@ -48,11 +51,23 @@ public class main {
 			//Re-implements scores array
 			scores = new float[scoreSize];
 			
-			//for loop to skip the location of the sequences
-			//for(int i = 0; i < size; i++)
-			//{
-			//	bufferedReader.readLine();
-			//}
+			//List of descriptive names
+			names = new String[size];
+			
+			//for to gather descriptive names from file
+			for(int i = 0; i < size; i++)
+			{
+				names[i] = bufferedReader.readLine();
+				int k = 0;
+				for(int j = 0; j < names[i].length()-1; j++)
+				{
+					if(names[i].substring(j, j+1).equals("/"))
+					{
+						k = j;
+					}
+				}
+				names[i] = names[i].substring(k+1, names[i].length()-7);
+			}
 			
 			int i = 0;
 			
@@ -94,6 +109,7 @@ public class main {
 		for(int i = 0; i < size; i++)
 		{
 			sequences.add(new Node(i + "", 0));
+			sequences.get(i).description = names[i];
 		}
 
 		//Creates tree and passes the scores array, number of sequences, and ArrayList of Nodes

@@ -116,10 +116,10 @@ public class main {
             bufferedWriter.newLine();
             
             // Write file names and index to output.txt
-            //for (i = 0; i < size; i++) {
-            //    bufferedWriter.write(i + ": " + filenames[i]);
-            //    bufferedWriter.newLine();
-            //}
+            for (i = 0; i < size; i++) {
+                bufferedWriter.write(i + ": " + filenames[i]);
+                bufferedWriter.newLine();
+            }
             
             // Write scores into output.txt
             // format: "{A} {B} {Score}"
