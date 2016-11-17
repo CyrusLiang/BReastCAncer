@@ -3,7 +3,6 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- *
  * @author Cyrus Liang
  * Prof. Phillip Heller
  * CS123A
@@ -26,6 +25,8 @@ public class main {
         // This will reference one line at a time
         String line;
 
+        // read and write file implementation borrowed from
+        // https://www.caveofprogramming.com/java/java-file-reading-and-writing-files-in-java.html
         try {
             // FileReader reads text files in the default encoding
             FileReader fileReader = new FileReader(fileName);
@@ -141,5 +142,4 @@ public class main {
         // display execution confirmation
         System.out.println("Done :D");
     }
-    
 }

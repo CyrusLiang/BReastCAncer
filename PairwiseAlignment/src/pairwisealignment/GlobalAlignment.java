@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pairwisealignment;
 
 import java.io.BufferedReader;
@@ -11,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- *
  * @author Cyrus Liang
  * Prof. Phillip Heller
  * CS123A
@@ -22,7 +16,10 @@ public class GlobalAlignment {
     // store nucleotide sequences
     private String nucA = "", nucB = "";
     // store the bottom right grid score
-    private int bestScore = 0;
+    private int globalScore = 0;
+    
+    // stores grid of scores
+    private Grid myGrid;
     
     // create obj
     public GlobalAlignment() {
@@ -38,17 +35,18 @@ public class GlobalAlignment {
         String line;
 
         try {
-            // FileReader reads text files in the default encoding.
+            // FileReader reads text files in the default encoding
             FileReader fileReader = new FileReader(fileNameA);
 
-            // Wrap FileReader in BufferedReader.
+            // Wrap FileReader in BufferedReader
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
+            // concatinate nucleotide sequence
             while((line = bufferedReader.readLine()) != null) {
                 inputA = inputA + line;
             }   
 
-            // Close files.
+            // Close files
             bufferedReader.close();         
         }
         catch(FileNotFoundException ex) {
@@ -60,24 +58,25 @@ public class GlobalAlignment {
             System.out.println(
                 "Error reading file '" 
                 + fileNameA + "'");                  
-            // Or we could just do this: 
             // ex.printStackTrace();
         }
+        
         // check inputA string
         System.out.println(inputA);
         
         try {
-            // FileReader reads text files in the default encoding.
+            // FileReader reads text files in the default encoding
             FileReader fileReader = new FileReader(fileNameB);
 
-            // Wrap FileReader in BufferedReader.
+            // Wrap FileReader in BufferedReader
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
+            // concatinate nucleotide sequence
             while((line = bufferedReader.readLine()) != null) {
                 inputB = inputB + line;
             }   
 
-            // Close files.
+            // Close files
             bufferedReader.close();         
         }
         catch(FileNotFoundException ex) {
@@ -89,12 +88,13 @@ public class GlobalAlignment {
             System.out.println(
                 "Error reading file '" 
                 + fileNameB + "'");                  
-            // Or we could just do this: 
             // ex.printStackTrace();
         }
+        
         // check inputA string
         System.out.println(inputB);
         
+        // set class variables
         setNucA(inputA);
         setNucB(inputB);
         
@@ -112,9 +112,28 @@ public class GlobalAlignment {
         return nucB;
     }
     
+    // return integer global score
+    public int getGlobalScore() {
+        return globalScore;
+    }
+    
     // return integer best score
     public int getBestScore() {
-        return bestScore;
+        
+        // lengths of nucA and nucB
+        int aLength = nucA.length(), bLength = nucB.length();
+        // initialize best as minimum integer value
+        int best = Integer.MIN_VALUE;
+        
+        // nested for loop to go through 2d array searching for greatest integer
+        for (int i = 0; i < aLength; i++) {
+            for (int j = 0; j < bLength; j++) {
+                int temp = myGrid.getScore(i, j);
+                best = (temp > best) ? temp : best;
+            }
+        }
+        
+        return best;
     }
     
     // set nucleotide A
@@ -128,9 +147,13 @@ public class GlobalAlignment {
     }
     
     // takes 2 nucleotide sequences and creates a grid
-    // call grid getScore() function for the best score
+    // call grid getScore() function for the global score
     public void needlemanWunsch(String nucA, String nucB) {
-        Grid myGrid = new Grid(nucA, nucB);
-        this.bestScore = myGrid.getScore(nucA.length(), nucB.length());
+        
+        // creates grid
+        this.myGrid = new Grid(nucA, nucB);
+        
+        // sets global score from the final cell in the grid
+        this.globalScore = myGrid.getScore(nucA.length(), nucB.length());
     }
 }
