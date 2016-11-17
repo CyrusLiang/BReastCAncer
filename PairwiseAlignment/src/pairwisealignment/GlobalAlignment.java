@@ -13,8 +13,8 @@ import java.io.IOException;
  */
 public class GlobalAlignment {
     
-    // store nucleotide sequences
-    private String nucA = "", nucB = "";
+    // store amino acid sequences
+    private String aaA = "", aaB = "";
     // store the bottom right grid score
     private int globalScore = 0;
     
@@ -41,7 +41,7 @@ public class GlobalAlignment {
             // Wrap FileReader in BufferedReader
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            // concatenate nucleotide sequence
+            // concatenate amino acid sequence
             while((line = bufferedReader.readLine()) != null) {
                 inputA = inputA + line;
             }   
@@ -71,7 +71,7 @@ public class GlobalAlignment {
             // Wrap FileReader in BufferedReader
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            // concatenate nucleotide sequence
+            // concatenate amino acid sequence
             while((line = bufferedReader.readLine()) != null) {
                 inputB = inputB + line;
             }   
@@ -95,24 +95,24 @@ public class GlobalAlignment {
         System.out.println(inputB);
         
         // set class variables
-        this.nucA = inputA;
-        this.nucB = inputB;
+        this.aaA = inputA;
+        this.aaB = inputB;
         
-        // takes 2 nucleotide sequences and creates a grid
-        this.myGrid = new Grid(nucA, nucB);
+        // takes 2 amino acid sequences and creates a grid
+        this.myGrid = new Grid(aaA, aaB);
         
         // sets global score from the final cell in the grid
-        this.globalScore = myGrid.getScore(nucA.length(), nucB.length());
+        this.globalScore = myGrid.getScore(aaA.length(), aaB.length());
     }
     
-    // return string nucleotide A
+    // return string amino acid A
     public String getNucA() {
-        return nucA;
+        return aaA;
     }
     
-    // return string nucleotide B
+    // return string amino acid B
     public String getNucB() {
-        return nucB;
+        return aaB;
     }
     
     // return integer global score
@@ -123,8 +123,8 @@ public class GlobalAlignment {
     // return integer best score
     public int getBestScore() {
         
-        // lengths of nucA and nucB
-        int aLength = nucA.length(), bLength = nucB.length();
+        // lengths of aaA and aaB
+        int aLength = aaA.length(), bLength = aaB.length();
         // initialize best as minimum integer value
         int best = Integer.MIN_VALUE;
         
@@ -139,14 +139,14 @@ public class GlobalAlignment {
         return best;
     }
     
-    // set nucleotide A
+    // set amino acid A
     public void setNucA(String inputA) {
-        this.nucA = inputA;
+        this.aaA = inputA;
     }
     
-    // set nucleotide B
+    // set amino acid B
     public void setNucB(String inputB) {
-        this.nucB = inputB;
+        this.aaB = inputB;
     }
     
 }
