@@ -16,14 +16,15 @@ public class Grid {
     
     // store final score
     private String nucA = "", nucB = "";
+    private final int lenA, lenB;
     private final int[][] myGrid;
     
     // store input as nucleotides and create grid
     public Grid(String inputA, String inputB) {
         this.nucA = " " + inputA;
         this.nucB = " " + inputB;
-        int lenA = nucA.length();
-        int lenB = nucB.length();
+        this.lenA = nucA.length();
+        this.lenB = nucB.length();
         this.myGrid = new int[lenA][lenB];
         System.out.println("lenA: " + lenA + " lenB: " + lenB);
         
@@ -60,6 +61,11 @@ public class Grid {
     
     // return integer score at row i and column j
     public int getScore(int i, int j) {
+        if (i < 0 || j < 0 || i > lenA || j > lenB) {
+            System.out.println("out of bounds.");
+            System.out.println("please pass integer between 0 and " + lenA
+                    + "and integer between 0 and " + lenB);
+        }
         return myGrid[i][j];
     }
 }
