@@ -53,14 +53,17 @@ public class Grid {
                     left = this.myGrid[i][j-1] - 2;
                     corner = this.myGrid[i-1][j-1];
                     corner = (nucA.charAt(i) == nucB.charAt(j)) ? corner + 1 : corner - 1;
+                    
+                    // compare top and left score first
                     temp = (top >= left) ? top : left;
+                    // then compare corner with temp
                     this.myGrid[i][j] = (temp >= corner) ? temp : corner;
                 }
             }
         }
     }
     
-    // return integer best score
+    // return integer score at row i and column j
     public int getScore(int i, int j) {
         return myGrid[i][j];
     }
