@@ -77,6 +77,8 @@ public class Grid {
 
     // return integer score comparison of two amino acids
     private int compareAA(char charA, char charB) {
+        
+        // score based on BLOSUM62
         int score = 0;
         switch (charA) {
             case 'C': 
@@ -373,7 +375,7 @@ public class Grid {
             default:
                 System.out.println("Invalid Amino Acid");
                 break;
-        }
+        } // never again ...
         
         return score;
     }
