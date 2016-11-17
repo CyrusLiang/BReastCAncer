@@ -1,12 +1,5 @@
 7
 21
-0: C:\Users\Cyrus\Documents\GitHub\BReastCAncer\PairwiseAlignment\src\pairwisealignment\input_files\mus_musculus_aa.txt
-1: C:\Users\Cyrus\Documents\GitHub\BReastCAncer\PairwiseAlignment\src\pairwisealignment\input_files\pongo_pygmaeus_aa.txt
-2: C:\Users\Cyrus\Documents\GitHub\BReastCAncer\PairwiseAlignment\src\pairwisealignment\input_files\bos_taurus_aa.txt
-3: C:\Users\Cyrus\Documents\GitHub\BReastCAncer\PairwiseAlignment\src\pairwisealignment\input_files\canis_lupus_aa.txt
-4: C:\Users\Cyrus\Documents\GitHub\BReastCAncer\PairwiseAlignment\src\pairwisealignment\input_files\gorilla_gorilla_aa.txt
-5: C:\Users\Cyrus\Documents\GitHub\BReastCAncer\PairwiseAlignment\src\pairwisealignment\input_files\homo_sapien_aa.txt
-6: C:\Users\Cyrus\Documents\GitHub\BReastCAncer\PairwiseAlignment\src\pairwisealignment\input_files\homo_sapien_mutant_aa.txt
 0 1 205
 0 2 146
 0 3 147
