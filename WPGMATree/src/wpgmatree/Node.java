@@ -38,9 +38,13 @@ public class Node {
 	 */
 	public void setScore(float score)
 	{
-		if(left != null || right != null)
+		if(left != null)
 		{
 			this.score = score - left.score;
+		}
+		else if(right != null)
+		{
+			this.score = score - right.score;
 		}
 		else
 		{

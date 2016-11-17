@@ -29,6 +29,9 @@ public class main {
 		//Amount of sequences used in MSA
 		int size = 0;
 		
+		//Stores max value
+		float max = 0;
+		
 		try{
 			//FileReader will read the file
 			FileReader fileReader = new FileReader(fileName);
@@ -59,7 +62,18 @@ public class main {
 				line = bufferedReader.readLine();
 				line  = line.substring(4, line.length());
 				scores[i] = Float.parseFloat(line);
+				if(scores[i] > max)
+				{
+					max = scores[i];
+				}
 				i++;
+			}
+			max += 10;
+			
+			//Used to make best score a smaller number
+			for(i = 0; i < scoreSize; i++)
+			{
+				scores[i] = max - scores[i];
 			}
 			
 			//closes BufferedReader
@@ -116,7 +130,7 @@ public class main {
 			// Wrap FileWriter in BufferedWriter.
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 			
-			bufferedWriter.write("WPGMA TREE: BRCA1\n\n");
+			bufferedWriter.write("WPGMA TREE: BRCA1\n\nOffset by max: " + (max-10) + " + 10\n((max + 10) - initialScore = currentScore)\n\n");
 			bufferedWriter.newLine();
 			
 			//generates tree within file

@@ -60,13 +60,13 @@ public class Tree {
 		System.out.print("\t");
 		for(int i = 0; i < size; i++)
 		{
-			System.out.print(i + "\t\t");
+			System.out.print(sequences.get(i).name + "\t\t");
 		}
 		System.out.println("");
 		
 		for(int i = 0; i < size; i++)
 		{
-			System.out.print(i + "\t");
+			System.out.print(sequences.get(i).name + "\t");
 			for(int j = 0; j < size; j++)
 			{
 				if(Float.toString(grid[i][j]).length() >= 8)
@@ -99,15 +99,15 @@ public class Tree {
 		float[] oldScores = new float[currentSize*currentSize];
 		float[] newScores = new float[currentSize*currentSize];
 		
-		//Finds min of current grid
+		//Finds max of current grid
 		for(int i = 1; i < currentSize; i++)
 		{
 			for(int j = 0; j < i; j++)
 			{
 				if(grid[i][j] <= min && grid[i][j]!= 0)
 				{
-					//stores min
-					//Saves location of min
+					//stores max
+					//Saves location of max
 					min = grid[i][j];
 					x = i;
 					y = j;
@@ -149,7 +149,7 @@ public class Tree {
 			
 			for(int i = 0; i < currentSize; i++)
 			{
-				if(i != x || i != y)
+				if(i != x && i != y)
 				{
 					//if location of the grid is 0
 					//swap x/y and i 
@@ -233,9 +233,9 @@ public class Tree {
 			//prints last score in grid
 			printGrid(makeGrid(newScores, currentSize-1),currentSize-1);
 			
-			System.out.println("\nmin: " + newScores[0] + "\nloc: 10");
+			System.out.println("\nmax: " + newScores[0] + "\nloc: 10");
 			
-			//Haves very last score
+			//Halves very last score
 			sum /= 2;
 			
 			//Stores last score into remaining Nodes
@@ -258,8 +258,6 @@ public class Tree {
 			pairedSequences.add(sequences.get(0));
 			pairedSequences.add(sequences.get(1));
 			pairedSequences.add(sequences.get(sequences.size()-1));
-			
-			//honestly could have made these into separate functions
 		}
 	}
 	
